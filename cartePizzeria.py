@@ -1,4 +1,5 @@
-from TD3.TD_test_technolog.cartePizzeriaException import CartePizzeraException
+from cartePizzeriaException import CartePizzeraException
+from pizza import Pizza
 
 class CartePizzeria:
     """
@@ -10,20 +11,12 @@ class CartePizzeria:
         Initialise la carte avec des pizzas prédéfinies.
         """
         self.pizzas = {
-            "Margherita": 8.50,
-            "Pepperoni": 9.00,
-            "Hawaiian": 10.00,
-            "Vegetarian": 9.50,
-            "BBQ Chicken": 11.00
+            Pizza("Margherita", 8.50, ["Tomato", "Mozzarella"]),
+            Pizza("Pepperoni", 9.00, ["Tomato", "Mozzarella", "Pepperoni"]),
+            Pizza("Hawaiian", 10.00, ["Tomato", "Mozzarella", "Ham", "Pineapple"]),
+            Pizza("Vegetarian", 9.50, ["Tomato", "Mozzarella", "Bell Peppers", "Olives"]),
+            Pizza("BBQ Chicken", 11.00, ["BBQ Sauce", "Chicken", "Red Onion"]),
         }
-
-    def afficher_carte(self):
-        """
-        Affiche la carte des pizzas avec leurs prix.
-        """
-        print("Carte des Pizzas :")
-        for pizza, prix in self.pizzas.items():
-            print(f"{pizza}: {prix} €")
             
     def is_empty(self):
         """
@@ -55,3 +48,5 @@ class CartePizzeria:
         if nom not in self.pizzas:
             raise CartePizzeraException(f"La pizza '{nom}' n'existe pas dans la carte.")
         del self.pizzas[nom]
+        print(f"La pizza '{nom}' a été supprimée de la carte.")
+        
