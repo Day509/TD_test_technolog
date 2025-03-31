@@ -31,8 +31,9 @@ def test_add_pizza():
    assert cp.pizzas["Margherita"] == 8.50
    
 def test_remove_pizza_with_name():
+   cp.pizzas = {}
    pizza = Mock()
-   pizza.nom = "Margerita"
+   pizza.nom = "Margherita"
    pizza.price = 8.50
    cp.add_pizza(pizza.nom, pizza.price)
    cp.remove_pizza(pizza.nom)
